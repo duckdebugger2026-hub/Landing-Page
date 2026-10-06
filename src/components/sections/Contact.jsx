@@ -106,8 +106,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-background px-4 py-20 sm:px-6 sm:py-28">
-      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[1fr_1.15fr] md:gap-14">
+    <section id="contact" data-tone="blush" className="px-4 py-20 sm:px-6 sm:py-28">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-[1fr_1.15fr] md:gap-14">
         <Reveal>
           <Eyebrow>Contact</Eyebrow>
           <h2 className="mt-3 text-3xl text-ink sm:text-5xl">Tell us about your business</h2>

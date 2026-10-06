@@ -76,6 +76,16 @@ export default function LivePreview() {
 
   useEffect(() => () => clearTimeout(timer.current), [])
 
+  // "Try this style" in the portfolio switches the preview to that business type.
+  useEffect(() => {
+    function onPreset(e) {
+      setPresetId(e.detail.preset)
+      setPaletteId(null)
+    }
+    window.addEventListener("preview:preset", onPreset)
+    return () => window.removeEventListener("preview:preset", onPreset)
+  }, [])
+
   function showNotice(kind) {
     setNotice({ id: Date.now(), text: noticeFor(kind, preset, displayName) })
     clearTimeout(timer.current)
@@ -109,8 +119,8 @@ export default function LivePreview() {
   )
 
   return (
-    <section id="preview" className="overflow-hidden bg-surface px-4 py-20 sm:px-6 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
+    <section id="preview" data-tone="lilac" className="overflow-hidden px-4 py-20 sm:px-6 sm:py-28">
+      <div className="mx-auto grid grid-cols-1 max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
         <Reveal className="lg:sticky lg:top-24">
           <Eyebrow>Try it</Eyebrow>
           <h2 className="mt-3 text-3xl text-ink sm:text-5xl">See your business here</h2>

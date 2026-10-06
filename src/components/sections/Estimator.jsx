@@ -157,14 +157,14 @@ export default function Estimator() {
   const isLast = step === steps.length - 1
 
   return (
-    <section id="estimate" className="bg-background px-4 py-20 sm:px-6 sm:py-28">
+    <section id="estimate" data-tone="blush" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         eyebrow="Estimator"
         title="Build your own package"
         intro="Answer five quick questions and watch the price update as you go. No sign-up, no obligation."
       />
 
-      <Reveal delay={100} className="mx-auto mt-14 grid max-w-6xl items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
+      <Reveal delay={100} className="mx-auto mt-14 grid grid-cols-1 max-w-6xl items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
         <div className="rounded-2xl border bg-surface/60 p-5 shadow-xl shadow-plum/5 backdrop-blur sm:p-8">
           <ol className="grid grid-cols-5 gap-2" aria-label="Steps">
             {steps.map((s, i) => (

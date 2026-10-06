@@ -6,11 +6,9 @@
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <meta name="theme-color" content="#2a1630" />
     <script>
-      // Apply the saved or system theme before first paint to avoid a flash.
+      // Light by default; apply a saved dark choice before first paint to avoid a flash.
       try {
-        var theme = localStorage.getItem('theme') ||
-          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        if (theme === 'dark') {
+        if (localStorage.getItem('theme') === 'dark') {
           document.documentElement.classList.add('dark')
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#130b16')
         }

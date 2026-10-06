@@ -8,7 +8,7 @@ import SectionHeading from "./SectionHeading"
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-band px-4 py-20 sm:px-6 sm:py-28">
+    <section id="pricing" data-tone="plum" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         inverted
         eyebrow="Pricing"

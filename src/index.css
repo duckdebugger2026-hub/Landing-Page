@@ -69,6 +69,16 @@
   --band-soft: var(--plum-soft);
   --glow: var(--haldi);
 
+  /* Scroll moods: the page background glides between these as sections pass */
+  --tone-petal: #f7f5f8;
+  --tone-cream: #fbf4e8;
+  --tone-lilac: #f0e9f4;
+  --tone-blush: #fbeff1;
+  --tone-plum: #2a1630;
+  --page: var(--tone-petal);
+  --dot: 42 22 48;
+  --dot-alpha: 0.13;
+
   --background: var(--petal);
   --foreground: var(--plum);
   --card: #ffffff;
@@ -100,6 +110,14 @@
   --band-soft: #321e3b;
   --glow: #2d1b36;
 
+  --tone-petal: #130b16;
+  --tone-cream: #17100f;
+  --tone-lilac: #160d1d;
+  --tone-blush: #190d16;
+  --tone-plum: #26142f;
+  --dot: 243 235 245;
+  --dot-alpha: 0.07;
+
   --background: #130b16;
   --foreground: var(--ink);
   --card: var(--surface);
@@ -120,6 +138,22 @@
   color-scheme: dark;
 }
 
+/* The current scroll mood, set on <html> by useScrollTone */
+:root[data-tone="cream"] {
+  --page: var(--tone-cream);
+}
+:root[data-tone="lilac"] {
+  --page: var(--tone-lilac);
+}
+:root[data-tone="blush"] {
+  --page: var(--tone-blush);
+}
+:root[data-tone="plum"] {
+  --page: var(--tone-plum);
+  --dot: 255 255 255;
+  --dot-alpha: 0.09;
+}
+
 /* Crossfade between themes (View Transitions API, where supported) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -135,7 +169,9 @@
     scroll-padding-top: 5rem;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background-color: var(--page);
+    transition: background-color 0.9s var(--ease-out);
   }
   h1, h2, h3 {
     @apply font-serif font-normal tracking-tight;
@@ -266,6 +302,27 @@
     --pv-to 0.6s ease;
 }
 
+/* Portfolio: story-style progress on the active tab, tiles easing in */
+.tab-progress {
+  width: 0;
+  animation: tab-progress 7s linear forwards;
+}
+@keyframes tab-progress {
+  to {
+    width: 100%;
+  }
+}
+.tile-in {
+  animation: tile-in 0.6s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
 /* Estimator */
 .step-in {
   animation: step-in 0.45s var(--ease-out) backwards;
@@ -283,6 +340,133 @@
   from {
     opacity: 0;
     translate: -8px 0;
+  }
+}
+
+/* Promise stamps: pressed onto the page, slightly tilted, in "ink" */
+.stamp {
+  rotate: var(--tilt, 0deg);
+  opacity: 0;
+}
+.stamp.is-stamped {
+  animation: stamp-in 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.25) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    scale: 1.8;
+  }
+  60% {
+    opacity: 1;
+    scale: 0.94;
+  }
+  100% {
+    opacity: 0.9;
+    scale: 1;
+  }
+}
+
+/* Chat bubbles in "How it works" */
+.bubble-in {
+  animation: bubble-in 0.45s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    scale: 0.85;
+    translate: 0 8px;
+  }
+}
+
+/* The rubber duck: floats gently, wiggles when squeezed */
+.duck-bob {
+  animation: duck-bob 4s ease-in-out infinite;
+}
+@keyframes duck-bob {
+  50% {
+    translate: 0 -6px;
+    rotate: -2deg;
+  }
+}
+.duck-wiggle {
+  transform-origin: 50% 90%;
+  animation: duck-wiggle 0.7s var(--ease-out);
+}
+@keyframes duck-wiggle {
+  20% {
+    rotate: -9deg;
+    scale: 1.06 0.94;
+  }
+  45% {
+    rotate: 7deg;
+    scale: 0.97 1.04;
+  }
+  70% {
+    rotate: -3deg;
+  }
+}
+
+/* Footer: the wordmark rises letter by letter; the waterline drifts */
+.wordmark-letter {
+  translate: 0 105%;
+  transition:
+    translate 0.9s var(--ease-out),
+    color 0.3s ease,
+    transform 0.4s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 45ms), 0s, 0s;
+}
+.wordmark-letter.is-in {
+  translate: 0 0;
+}
+.wordmark-letter:hover {
+  color: var(--marigold);
+  transform: translateY(-0.07em) rotate(-4deg);
+}
+.wave-drift {
+  animation: wave-drift 16s linear infinite;
+}
+@keyframes wave-drift {
+  to {
+    translate: -50% 0;
+  }
+}
+
+/* "Ask the duck" chat */
+.chat-in {
+  transform-origin: bottom right;
+  animation: chat-in 0.35s var(--ease-out) backwards;
+}
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    scale: 0.92;
+    translate: 0 12px;
+  }
+}
+.msg-in {
+  animation: msg-in 0.3s var(--ease-out) backwards;
+}
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+.typing-dot {
+  animation: typing-dot 1s ease-in-out infinite;
+}
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    translate: 0 0;
+    opacity: 0.5;
+  }
+  30% {
+    translate: 0 -3px;
+    opacity: 1;
   }
 }
 
@@ -308,6 +492,14 @@
   .fade-down,
   .phone-in,
   .arc-in,
+  .chat-in,
+  .msg-in,
+  .typing-dot,
+  .wave-drift,
+  .tile-in,
+  .bubble-in,
+  .duck-bob,
+  .duck-wiggle,
   .step-in,
   .line-in,
   .marquee-track {
@@ -317,9 +509,24 @@
     animation: none;
     stroke-dashoffset: 0;
   }
+  .morph {
+    transition: none !important;
+  }
+  .stamp,
+  .stamp.is-stamped {
+    animation: none;
+    opacity: 0.9;
+  }
   .reveal {
     opacity: 1;
     translate: none;
     transition: none;
+  }
+  .wordmark-letter {
+    translate: none;
+    transition: color 0.3s ease;
+  }
+  .wordmark-letter:hover {
+    transform: none;
   }
 }

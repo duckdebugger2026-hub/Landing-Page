@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { mockupThemes } from "@/data/mockupThemes"
 import Artwork from "./Artwork"
 
-export default function PhoneMockup({ theme, brand, headline, className }) {
+export default function PhoneMockup({ theme, brand, headline, className, fontClass = "font-serif" }) {
   const t = mockupThemes[theme]
   return (
     <div
@@ -25,7 +25,7 @@ export default function PhoneMockup({ theme, brand, headline, className }) {
         </div>
         <div className="flex flex-1 flex-col px-3 pt-2">
           <Artwork theme={theme} className="aspect-[4/3]" />
-          <p className="mt-2 text-center font-serif text-[13px] leading-tight" style={{ color: t.ink }}>
+          <p className={cn("mt-2 text-center text-[13px] leading-tight", fontClass)} style={{ color: t.ink }}>
             {headline}
           </p>
           <span className="mt-2 rounded-full bg-whatsapp py-1 text-center text-[7px] font-medium text-white">

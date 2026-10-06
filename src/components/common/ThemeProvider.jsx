@@ -12,32 +12,19 @@ function readStored() {
   }
 }
 
-function systemTheme() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-}
-
 function applyTheme(theme) {
   document.documentElement.classList.toggle("dark", theme === "dark")
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", THEME_COLOURS[theme])
 }
 
-// Follows the device setting until the visitor picks a theme, then remembers it.
-// index.html applies the same logic before first paint, so there's no flash.
+// Light by default. If the visitor switches to dark, their choice is remembered.
+// index.html applies the saved choice before first paint, so there's no flash.
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => readStored() ?? systemTheme())
+  const [theme, setTheme] = useState(() => (readStored() === "dark" ? "dark" : "light"))
 
   useEffect(() => {
     applyTheme(theme)
   }, [theme])
-
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-color-scheme: dark)")
-    const onChange = () => {
-      if (!readStored()) setTheme(systemTheme())
-    }
-    query.addEventListener("change", onChange)
-    return () => query.removeEventListener("change", onChange)
-  }, [])
 
   const toggleTheme = useCallback(() => {
     const next = theme === "dark" ? "light" : "dark"

@@ -28,12 +28,27 @@ Also update the page title, description and business details in **`index.html`**
 
 Estimator prices (pages, features, rush delivery, care plan) are in
 **`src/data/estimator.js`**. The live preview's sample copy for each business
-type, and its colour palettes, are in **`src/data/previewPresets.js`**.
+type, and its colour palettes, are in **`src/data/previewPresets.js`**. The DM
+inbox, the four promise stamps, the WhatsApp chat in "How it works" and the
+duck's lines are in **`src/data/story.js`**. The hero's availability line is in
+`src/data/site.js`, along with your working hours (`hours`), which drive the
+footer's live "Online now" status.
+
+The "Ask the duck" chat assistant is scripted, so it's free and works on static
+hosting. Its topics, trigger words and replies are in **`src/data/chatbot.js`**;
+answers about prices, timelines and FAQs are pulled from the rest of the site's
+data, so they stay in sync. Anything it can't answer goes to WhatsApp with the
+visitor's question pre-filled.
 
 Colours live at the top of `src/index.css` (`--plum`, `--marigold`, `--petal`,
 `--lilac`, `--haldi`). Components use semantic tokens (`ink`, `surface`, `subtle`,
 `band`, `glow`) that switch in dark mode; the dark palette is in the `.dark` block
-in the same file. Legal pages are in `src/pages/`.
+in the same file.
+
+Each homepage section has a `data-tone` (petal, cream, lilac, blush or plum),
+and the page background glides between them as you scroll. The tone colours are
+the `--tone-*` variables in `src/index.css`. The interactive dot grid behind the
+page is `src/components/common/DotField.jsx`. Legal pages are in `src/pages/`.
 
 ## Enquiry form
 
@@ -63,18 +78,24 @@ src/
   pages/                    Home, Privacy, Terms, Refunds
   components/
     layout/                 Header, Footer, Logo, LegalLayout, WhatsAppButton
-    sections/               Hero, Marquee, Work, LivePreview, Pricing, Estimator,
-                            Process, Faq, Contact
-    common/                 Icons, Reveal, mockups
+    hero/                   Instagram-to-website morphing phone
+    sections/               Hero, Marquee, Inbox, Work, LivePreview, Promises,
+                            Pricing, Estimator, Process, StudioNote, Faq, Contact
+    common/                 Icons, Reveal, DotField, mockups
     preview/                live preview site and phone/desktop frames
+    footer/                 live studio status, wordmark, duck pond
+    chat/                   "Ask the duck" chat widget
     ui/                     shadcn/ui components
   data/
     site.js                 all content and contact details
     estimator.js            estimator questions and prices
     previewPresets.js       live preview copy and colour palettes
+    story.js                DMs, promises, WhatsApp chat script, duck lines
+    chatbot.js              chat assistant topics and replies
     mockupThemes.js         colours for the portfolio mockups
   hooks/                    useInView, useScrolled, useActiveSection, useCountUp,
-                            useTheme
-  lib/                      class name helper, rupee formatting
+                            useTheme, useScrollTone, useScrollProgress
+  lib/                      class names, rupee formatting, studio hours,
+                            chat engine
 google-apps-script/         enquiry form backend
 ```

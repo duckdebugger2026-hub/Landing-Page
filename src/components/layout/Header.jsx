@@ -6,6 +6,7 @@ import { WhatsAppIcon } from "@/components/common/Icons"
 import Logo from "@/components/layout/Logo"
 import ThemeToggle from "@/components/layout/ThemeToggle"
 import { useActiveSection } from "@/hooks/useActiveSection"
+import { useScrollProgress } from "@/hooks/useScrollProgress"
 import { useScrolled } from "@/hooks/useScrolled"
 import { navLinks, whatsappLink } from "@/data/site"
 import { cn } from "@/lib/utils"
@@ -16,6 +17,7 @@ export default function Header() {
   const [open, setOpen] = useState(false)
   const scrolled = useScrolled()
   const active = useActiveSection(sectionIds)
+  const progressRef = useScrollProgress()
 
   return (
     <header
@@ -127,6 +129,12 @@ export default function Header() {
           </Sheet>
         </div>
       </div>
+      <span
+        ref={progressRef}
+        aria-hidden
+        className="absolute inset-x-0 -bottom-px h-0.5 origin-left bg-marigold"
+        style={{ transform: "scaleX(0)" }}
+      />
     </header>
   )
 }

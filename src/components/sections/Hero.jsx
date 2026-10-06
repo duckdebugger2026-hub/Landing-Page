@@ -1,9 +1,10 @@
 import { Fragment, useEffect, useRef } from "react"
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowRightIcon, CheckIcon } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { WhatsAppIcon } from "@/components/common/Icons"
 import PhoneMockup from "@/components/common/PhoneMockup"
-import { projects, site, whatsappLink } from "@/data/site"
+import InstaToSite from "@/components/hero/InstaToSite"
+import { packages, projects, site, whatsappLink } from "@/data/site"
 import { cn } from "@/lib/utils"
 
 const lead = "A beautiful home for your business, beyond the".split(" ")
@@ -55,12 +56,20 @@ function usePhoneParallax() {
 }
 
 export default function Hero() {
-  const [chai, riya, smile] = projects
+  const [, riya, smile] = projects
+  const promises = [`From ${packages[0].price}`, "Live in 5 days", "No monthly fees"]
   const stageRef = usePhoneParallax()
 
   return (
-    <section id="top" className="relative overflow-hidden px-4 pt-14 sm:px-6 sm:pt-20">
+    <section id="top" data-tone="petal" className="relative overflow-hidden px-4 pt-14 sm:px-6 sm:pt-20">
       <div className="mx-auto max-w-3xl text-center">
+        <p className="fade-up mb-7 inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3.5 py-1.5 text-xs font-medium text-ink shadow-sm backdrop-blur sm:text-sm">
+          <span className="relative flex size-2">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-whatsapp/60 [animation-duration:2.4s] motion-reduce:animate-none" />
+            <span className="relative inline-flex size-2 rounded-full bg-whatsapp" />
+          </span>
+          {site.availability}
+        </p>
         <h1 className="mx-auto max-w-[15ch] text-[2.6rem] leading-[1.05] text-balance text-ink sm:text-6xl lg:text-7xl">
           {lead.map((word, i) => (
             <Fragment key={i}>
@@ -112,11 +121,22 @@ export default function Hero() {
             Chat on WhatsApp
           </a>
         </div>
+        <ul
+          className="fade-up mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
+          style={{ "--d": "950ms" }}
+        >
+          {promises.map((item) => (
+            <li key={item} className="inline-flex items-center gap-1.5">
+              <CheckIcon className="size-4 text-marigold" strokeWidth={2.5} />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div
         ref={stageRef}
-        className="relative mx-auto mt-12 h-[230px] max-w-md transition-transform duration-700 ease-out sm:mt-16 sm:h-[400px] sm:max-w-xl"
+        className="relative mx-auto mt-14 h-[230px] max-w-md transition-transform duration-700 ease-out sm:mt-16 sm:h-[400px] sm:max-w-xl"
         style={{
           transform:
             "perspective(1200px) rotateX(calc(var(--ty, 0) * 1deg)) rotateY(calc(var(--tx, 0) * 1deg))",
@@ -140,10 +160,10 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-[-40px] left-1/2 w-[36%] -translate-x-1/2">
+        <div className="absolute bottom-[-20px] left-1/2 z-10 w-[36%] -translate-x-1/2 sm:bottom-[-24px]">
           <div style={{ transform: "translateY(calc(var(--p, 0) * -16px))" }}>
             <div className="phone-in" style={{ "--d": "850ms" }}>
-              <PhoneMockup theme={chai.theme} brand="Chai" headline={chai.headline} />
+              <InstaToSite />
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { mockupThemes } from "@/data/mockupThemes"
 import Artwork from "./Artwork"
 
-export default function BrowserMockup({ theme, brand, headline, className }) {
+export default function BrowserMockup({ theme, brand, headline, className, fontClass = "font-serif" }) {
   const t = mockupThemes[theme]
   return (
     <div
@@ -29,7 +29,7 @@ export default function BrowserMockup({ theme, brand, headline, className }) {
         </div>
         <div className="mt-4 grid grid-cols-2 items-center gap-4">
           <div>
-            <p className="font-serif text-lg leading-tight sm:text-xl" style={{ color: t.ink }}>
+            <p className={cn("text-lg leading-tight sm:text-xl", fontClass)} style={{ color: t.ink }}>
               {headline}
             </p>
             <span className="mt-2 block h-1 w-4/5 rounded-full" style={{ background: t.ink, opacity: 0.12 }} />
