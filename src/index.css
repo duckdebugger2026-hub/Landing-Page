@@ -60,7 +60,7 @@
   --plum: #2a1630;
   --plum-soft: #3b2442;
   --marigold: #e5a03a;
-  --petal: #f7f5f8;
+  --petal: #faf7fb;
   --lilac: #efeaf1;
   --haldi: #fbebcb;
   --whatsapp: #1fa855;
@@ -76,12 +76,40 @@
   --marker: rgb(229 160 58 / 0.32);
 
   /* Scroll moods: the page background glides between these as sections pass */
-  --tone-petal: #f7f5f8;
-  --tone-cream: #fbf4e8;
-  --tone-lilac: #f0e9f4;
-  --tone-blush: #fbeff1;
+  --tone-petal: #faf7fb;
+  --tone-cream: #fff3de;
+  --tone-lilac: #f2e8fb;
+  --tone-blush: #ffedf1;
   --tone-plum: #2a1630;
   --page: var(--tone-petal);
+
+  /* Aurora: three soft glows per mood (marigold, rose, violet families) */
+  --b-petal-1: #ffc56e;
+  --b-petal-2: #ffb0c6;
+  --b-petal-3: #cdb8ff;
+  --b-cream-1: #ffcc66;
+  --b-cream-2: #ffab84;
+  --b-cream-3: #ffe08a;
+  --b-lilac-1: #c9b0ff;
+  --b-lilac-2: #ffb0d6;
+  --b-lilac-3: #b6d4ff;
+  --b-blush-1: #ffacc0;
+  --b-blush-2: #ffca85;
+  --b-blush-3: #dcc0ff;
+  --b-plum-1: #6d2f86;
+  --b-plum-2: #b8641a;
+  --b-plum-3: #9b2c66;
+  --blob-opacity: 0.5;
+
+  /* Mild gradients: headline accents (sunset), buttons (plum) */
+  --grad-a: #c2620a;
+  --grad-b: #d9402a;
+  --grad-c: #b42a6e;
+  --grad-bright-a: #f6b24a;
+  --grad-bright-b: #f47a5c;
+  --grad-bright-c: #ec6aa5;
+  --btn-a: #2a1630;
+  --btn-b: #4d1f5e;
   --dot: 42 22 48;
   --dot-alpha: 0.13;
 
@@ -123,6 +151,29 @@
   --tone-lilac: #160d1d;
   --tone-blush: #190d16;
   --tone-plum: #26142f;
+
+  --b-petal-1: #4d1f60;
+  --b-petal-2: #5c3a10;
+  --b-petal-3: #3a2470;
+  --b-cream-1: #5c3a12;
+  --b-cream-2: #5e2a20;
+  --b-cream-3: #4a3a14;
+  --b-lilac-1: #3e2470;
+  --b-lilac-2: #5a2350;
+  --b-lilac-3: #23366a;
+  --b-blush-1: #5e2036;
+  --b-blush-2: #5a3a14;
+  --b-blush-3: #44256a;
+  --b-plum-1: #6a2c80;
+  --b-plum-2: #6e3d10;
+  --b-plum-3: #7a2452;
+  --blob-opacity: 0.65;
+
+  --grad-a: #f6b24a;
+  --grad-b: #f47a5c;
+  --grad-c: #ec6aa5;
+  --btn-a: #f6eef6;
+  --btn-b: #ffd9a3;
   --dot: 243 235 245;
   --dot-alpha: 0.07;
 
@@ -147,17 +198,53 @@
 }
 
 /* The current scroll mood, set on <html> by useScrollTone */
+@property --blob-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --blob-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --blob-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+:root {
+  --blob-1: var(--b-petal-1);
+  --blob-2: var(--b-petal-2);
+  --blob-3: var(--b-petal-3);
+  transition:
+    --blob-1 1.4s ease,
+    --blob-2 1.4s ease,
+    --blob-3 1.4s ease;
+}
 :root[data-tone="cream"] {
   --page: var(--tone-cream);
+  --blob-1: var(--b-cream-1);
+  --blob-2: var(--b-cream-2);
+  --blob-3: var(--b-cream-3);
 }
 :root[data-tone="lilac"] {
   --page: var(--tone-lilac);
+  --blob-1: var(--b-lilac-1);
+  --blob-2: var(--b-lilac-2);
+  --blob-3: var(--b-lilac-3);
 }
 :root[data-tone="blush"] {
   --page: var(--tone-blush);
+  --blob-1: var(--b-blush-1);
+  --blob-2: var(--b-blush-2);
+  --blob-3: var(--b-blush-3);
 }
 :root[data-tone="plum"] {
   --page: var(--tone-plum);
+  --blob-1: var(--b-plum-1);
+  --blob-2: var(--b-plum-2);
+  --blob-3: var(--b-plum-3);
   --dot: 255 255 255;
   --dot-alpha: 0.09;
 }
@@ -498,6 +585,113 @@
   background-size: 100% 100%;
 }
 
+/* Aurora: soft glows that drift on their own, behind everything */
+.aurora-blob {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 9999px;
+  opacity: var(--blob-opacity);
+  will-change: transform;
+}
+.aurora-1 {
+  top: -32vmax;
+  left: -22vmax;
+  background: radial-gradient(closest-side, var(--blob-1), transparent);
+  animation: aurora-1 40s ease-in-out infinite alternate;
+}
+.aurora-2 {
+  top: 8vh;
+  right: -34vmax;
+  background: radial-gradient(closest-side, var(--blob-2), transparent);
+  animation: aurora-2 48s ease-in-out infinite alternate;
+}
+.aurora-3 {
+  bottom: -40vmax;
+  left: 12vw;
+  background: radial-gradient(closest-side, var(--blob-3), transparent);
+  animation: aurora-3 55s ease-in-out infinite alternate;
+}
+@keyframes aurora-1 {
+  50% {
+    transform: translate(24vw, 18vh) scale(1.12);
+  }
+  100% {
+    transform: translate(8vw, 36vh) scale(0.9);
+  }
+}
+@keyframes aurora-2 {
+  50% {
+    transform: translate(-28vw, 24vh) scale(1.15);
+  }
+  100% {
+    transform: translate(-12vw, -6vh) scale(0.95);
+  }
+}
+@keyframes aurora-3 {
+  50% {
+    transform: translate(22vw, -26vh) scale(1.05);
+  }
+  100% {
+    transform: translate(-14vw, -12vh) scale(1.2);
+  }
+}
+
+/* Mild gradients */
+.text-gradient,
+.text-gradient-bright {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-inline: 0.07em;
+  margin-inline: -0.07em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.text-gradient {
+  background-image: linear-gradient(100deg, var(--grad-a), var(--grad-b) 55%, var(--grad-c));
+}
+.text-gradient-bright {
+  background-image: linear-gradient(100deg, var(--grad-bright-a), var(--grad-bright-b) 55%, var(--grad-bright-c));
+}
+.btn-gradient {
+  background-image: linear-gradient(135deg, var(--btn-a), var(--btn-b));
+}
+.band-gradient {
+  background-image: linear-gradient(150deg, var(--band), #3d1b4c 55%, #4b1d3f);
+}
+.dark .band-gradient {
+  background-image: linear-gradient(150deg, var(--band), #341c40 55%, #3d1a34);
+}
+.gradient-border {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--background), var(--background)) padding-box,
+    linear-gradient(135deg, #e5a03a, #ec6a4c 55%, #d2457f) border-box;
+}
+/* Slowly flowing gradients: the ticker band and the hero arc */
+.band-flow {
+  background-image: linear-gradient(100deg, var(--band), #47204f 30%, var(--band) 55%, #3c1838 80%, var(--band));
+  background-size: 300% 100%;
+  animation: gradient-flow 24s ease-in-out infinite alternate;
+}
+.arc-glow {
+  background-image: linear-gradient(120deg, var(--haldi), #ffd6c4, #ffd2e6, #fde3b0);
+  background-size: 300% 100%;
+  animation: gradient-flow 16s ease-in-out infinite alternate;
+}
+.dark .arc-glow {
+  background-image: linear-gradient(120deg, #2d1b36, #3b1d3b, #2a1f47, #33202a);
+}
+@keyframes gradient-flow {
+  to {
+    background-position: 100% 0;
+  }
+}
+.drift-slow {
+  animation: aurora-2 42s ease-in-out infinite alternate;
+}
+
 /* Industry ticker */
 .marquee-track {
   animation: marquee 50s linear infinite;
@@ -520,6 +714,10 @@
   .fade-down,
   .phone-in,
   .arc-in,
+  .aurora-blob,
+  .band-flow,
+  .arc-glow,
+  .drift-slow,
   .chat-in,
   .msg-in,
   .typing-dot,

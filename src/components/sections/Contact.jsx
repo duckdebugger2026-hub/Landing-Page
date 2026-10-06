@@ -189,7 +189,7 @@ export default function Contact() {
               <input id="website" name="website" tabIndex={-1} autoComplete="off" />
             </div>
           </div>
-          <Button type="submit" disabled={sending} className="mt-6 h-11 w-full rounded-full text-[15px]">
+          <Button type="submit" disabled={sending} className="btn-gradient mt-6 h-11 w-full rounded-full text-[15px] shadow-lg shadow-plum/15 hover:brightness-110">
             {sending && <Loader2Icon className="animate-spin" />}
             {sending ? "Sending…" : "Send enquiry"}
             {!sending && (

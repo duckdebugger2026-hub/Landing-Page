@@ -23,13 +23,17 @@ export default function Footer({ home = true }) {
   const prefix = home ? "" : import.meta.env.BASE_URL
 
   return (
-    <footer id="site-footer" className="relative overflow-hidden bg-band text-white">
+    <footer id="site-footer" className="relative isolate overflow-hidden bg-band text-white">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <span className="drift-slow absolute -top-40 -right-40 size-[38rem] rounded-full bg-[radial-gradient(closest-side,rgb(229_160_58/0.22),transparent)]" />
+        <span className="drift-slow absolute top-1/3 -left-48 size-[34rem] rounded-full bg-[radial-gradient(closest-side,rgb(210_69_127/0.18),transparent)] [animation-delay:-14s]" />
+      </div>
       <div className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 sm:pt-24">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-14 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <StudioStatus />
             <h2 className="mt-6 max-w-2xl text-4xl leading-[1.04] text-balance sm:text-[3.6rem]">
-              Let's give your shop <Em className="text-marigold">a home online.</Em>
+              Let's give your shop <Em bright>a home online.</Em>
             </h2>
             <p className="mt-5 max-w-lg text-pretty text-white/65">
               Tell us about your business on WhatsApp. You'll get a free quote and a homepage idea, usually

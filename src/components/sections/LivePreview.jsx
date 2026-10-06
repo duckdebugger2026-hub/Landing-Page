@@ -202,7 +202,7 @@ export default function LivePreview() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-            <Button onClick={wantThis} className="h-11 rounded-full px-6 text-[15px]">
+            <Button onClick={wantThis} className="btn-gradient h-11 rounded-full px-6 text-[15px] shadow-lg shadow-plum/20 hover:brightness-110">
               I want this one
               <ArrowRightIcon className="transition-transform duration-300 group-hover/button:translate-x-0.5" />
             </Button>

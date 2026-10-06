@@ -10,10 +10,10 @@ import { cn } from "@/lib/utils"
 const lead = "A beautiful home for your business, beyond the".split(" ")
 
 // Each word slides up from behind a mask, one after another.
-function Word({ i, children }) {
+function Word({ i, children, className }) {
   return (
     <span className="-mx-[0.06em] -mb-[0.14em] inline-block overflow-hidden px-[0.06em] pb-[0.14em] align-top">
-      <span className="word-rise inline-block" style={{ "--i": i }}>
+      <span className={`word-rise inline-block ${className ?? ""}`} style={{ "--i": i }}>
         {children}
       </span>
     </span>
@@ -76,19 +76,27 @@ export default function Hero() {
               <Word i={i}>{word}</Word>{" "}
             </Fragment>
           ))}
-          <span className="relative isolate inline-block font-serif text-[1.1em] font-normal tracking-[-0.01em] whitespace-nowrap text-highlight italic">
-            <Word i={lead.length}>Instagram</Word> <Word i={lead.length + 1}>grid.</Word>
+          <span className="relative isolate inline-block font-serif text-[1.1em] font-normal tracking-[-0.01em] whitespace-nowrap italic">
+            <Word i={lead.length} className="text-gradient">Instagram</Word>{" "}
+            <Word i={lead.length + 1} className="text-gradient">grid.</Word>
             <svg
               aria-hidden
               viewBox="0 0 300 20"
               preserveAspectRatio="none"
-              className="absolute -bottom-[0.06em] left-[2%] -z-10 h-[0.32em] w-[96%] text-marigold"
+              className="absolute -bottom-[0.06em] left-[2%] -z-10 h-[0.32em] w-[96%]"
             >
+              <defs>
+                <linearGradient id="hero-underline" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stopColor="#f2a83a" />
+                  <stop offset="0.55" stopColor="#ef6a45" />
+                  <stop offset="1" stopColor="#d6457f" />
+                </linearGradient>
+              </defs>
               <path
                 d="M3 14 C 70 5, 160 3, 297 9"
                 pathLength="1"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#hero-underline)"
                 strokeWidth="4"
                 strokeLinecap="round"
                 className="draw-line"
@@ -104,7 +112,7 @@ export default function Hero() {
           {site.description}
         </p>
         <div className="fade-up mt-8 flex flex-col justify-center gap-3 sm:flex-row" style={{ "--d": "800ms" }}>
-          <a href="#contact" className={cn(buttonVariants(), "h-11 rounded-full px-6 text-[15px]")}>
+          <a href="#contact" className={cn(buttonVariants(), "btn-gradient h-11 rounded-full px-6 text-[15px] shadow-lg shadow-plum/20 hover:brightness-110")}>
             Get a free quote
             <ArrowRightIcon className="transition-transform duration-300 group-hover/button:translate-x-0.5" />
           </a>
@@ -143,9 +151,11 @@ export default function Hero() {
         }}
       >
         <div
-          className="arc-in absolute bottom-0 left-1/2 aspect-[2/1] w-[118%] -translate-x-1/2 rounded-t-full bg-glow"
+          className="arc-in absolute bottom-0 left-1/2 aspect-[2/1] w-[118%] -translate-x-1/2 overflow-hidden rounded-t-full bg-glow"
           style={{ "--d": "700ms" }}
-        />
+        >
+          <div className="arc-glow absolute inset-0" />
+        </div>
         <div className="absolute bottom-[-60px] left-[6%] w-[30%] -rotate-[10deg] sm:bottom-[-70px]">
           <div style={{ transform: "translateY(calc(var(--p, 0) * 24px)) rotate(calc(var(--p, 0) * -6deg))" }}>
             <div className="phone-in" style={{ "--d": "1000ms", "--from-rotate": "10deg" }}>

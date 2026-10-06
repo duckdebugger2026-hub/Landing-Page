@@ -48,7 +48,9 @@ in the same file.
 Each homepage section has a `data-tone` (petal, cream, lilac, blush or plum),
 and the page background glides between them as you scroll. The tone colours are
 the `--tone-*` variables in `src/index.css`. The interactive dot grid behind the
-page is `src/components/common/DotField.jsx`. Legal pages are in `src/pages/`.
+page is `src/components/common/DotField.jsx`, and the slowly drifting colour
+glows behind it are `src/components/common/Aurora.jsx` (their colours per mood
+are the `--b-*` variables in `src/index.css`). Legal pages are in `src/pages/`.
 
 ## Enquiry form
 
@@ -81,7 +83,7 @@ src/
     hero/                   Instagram-to-website morphing phone
     sections/               Hero, Marquee, Inbox, Work, LivePreview, Promises,
                             Pricing, Estimator, Process, StudioNote, Faq, Contact
-    common/                 Icons, Reveal, DotField, mockups
+    common/                 Icons, Reveal, DotField, Aurora, Type, mockups
     preview/                live preview site and phone/desktop frames
     footer/                 live studio status, wordmark, duck pond
     chat/                   "Ask the duck" chat widget

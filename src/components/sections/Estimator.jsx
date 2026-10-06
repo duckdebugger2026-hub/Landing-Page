@@ -344,7 +344,7 @@ export default function Estimator() {
 
         <aside
           aria-label="Your estimate"
-          className="rounded-2xl bg-band p-6 text-white shadow-2xl shadow-plum/25 sm:p-8 lg:sticky lg:top-24"
+          className="band-gradient rounded-2xl bg-band p-6 text-white shadow-2xl shadow-plum/25 sm:p-8 lg:sticky lg:top-24"
         >
           <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-white/60 uppercase">Your estimate</p>
           <p className="mt-3 text-5xl font-semibold tracking-[-0.04em] tabular-nums sm:text-6xl" aria-live="polite">
