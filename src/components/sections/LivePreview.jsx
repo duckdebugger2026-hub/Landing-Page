@@ -10,6 +10,7 @@ import PreviewSite from "@/components/preview/PreviewSite"
 import { palettes, presets } from "@/data/previewPresets"
 import { cn } from "@/lib/utils"
 import { Eyebrow } from "./SectionHeading"
+import { Em, Mark } from "@/components/common/Type"
 
 const headingStyles = [
   { id: "classic", label: "Classic", sample: "font-serif" },
@@ -123,9 +124,9 @@ export default function LivePreview() {
       <div className="mx-auto grid grid-cols-1 max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
         <Reveal className="lg:sticky lg:top-24">
           <Eyebrow>Try it</Eyebrow>
-          <h2 className="mt-3 text-3xl text-ink sm:text-5xl">See your business here</h2>
+          <h2 className="mt-4 text-[2rem] leading-[1.08] text-ink sm:text-[2.9rem]">See <Em>your business</Em> here</h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            Type your business name and watch your website come together. It's a real preview: scroll it
+            Type your business name and watch your website come together. It's <Mark>a real preview</Mark>: scroll it
             and tap the buttons.
           </p>
 

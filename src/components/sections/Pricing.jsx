@@ -5,6 +5,7 @@ import Reveal from "@/components/common/Reveal"
 import { packages } from "@/data/site"
 import { cn } from "@/lib/utils"
 import SectionHeading from "./SectionHeading"
+import { Em, Mark } from "@/components/common/Type"
 
 export default function Pricing() {
   return (
@@ -12,7 +13,7 @@ export default function Pricing() {
       <SectionHeading
         inverted
         eyebrow="Pricing"
-        title="Simple packages, clear prices"
+        title={<>Simple packages, <Em className="text-marigold">clear prices</Em></>}
         intro="Pick a starting point. Every package includes a mobile-friendly design, an enquiry form connected to Google Sheets and a WhatsApp chat button."
       />
       <div className="mx-auto mt-14 grid max-w-5xl items-stretch gap-5 md:grid-cols-3">
@@ -36,7 +37,7 @@ export default function Pricing() {
               {pkg.blurb}
             </p>
             <p className="mt-6 flex items-baseline gap-2">
-              <span className="font-serif text-4xl">{pkg.price}</span>
+              <span className="text-4xl font-semibold tracking-[-0.03em] tabular-nums">{pkg.price}</span>
               <span className={cn("text-xs", pkg.popular ? "text-muted-foreground" : "text-white/60")}>
                 one-time
               </span>
@@ -66,7 +67,7 @@ export default function Pricing() {
         ))}
       </div>
       <p className="mt-10 text-center text-sm text-white/55">
-        Domain and hosting billed at actual cost. No monthly fees.
+        Domain and hosting billed at actual cost. <Mark>No monthly fees.</Mark>
       </p>
       <p className="mt-3 text-center">
         <a

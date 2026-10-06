@@ -10,7 +10,7 @@ export default function Wordmark({ text }) {
     <p
       ref={ref}
       aria-label={text}
-      className="flex justify-center px-4 font-serif text-[clamp(3rem,13.6vw,13rem)] leading-[0.9] tracking-tight whitespace-nowrap text-white select-none"
+      className="flex justify-center px-4 font-serif text-[clamp(3.4rem,18.5vw,16rem)] leading-[0.9] tracking-tight whitespace-nowrap text-white select-none"
     >
       {[...text].map((char, i) => (
         <span key={i} aria-hidden className="-my-[0.12em] inline-block overflow-hidden py-[0.12em]">

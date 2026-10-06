@@ -91,7 +91,7 @@ export default function Header() {
               <MenuIcon />
             </SheetTrigger>
             <SheetContent side="right" className="bg-background p-6">
-              <SheetTitle className="font-serif text-2xl font-normal">Menu</SheetTitle>
+              <SheetTitle className="text-xl font-semibold tracking-tight">Menu</SheetTitle>
               <nav aria-label="Mobile" className="mt-4">
                 <ul className="flex flex-col">
                   {navLinks.map((link) => (

@@ -5,6 +5,7 @@ import { chat } from "@/data/story"
 import { site, steps } from "@/data/site"
 import { cn } from "@/lib/utils"
 import SectionHeading from "./SectionHeading"
+import { Em, Mark } from "@/components/common/Type"
 
 // Fills the timeline as it passes the middle of the screen, and reports how
 // many steps have been reached.
@@ -153,8 +154,8 @@ export default function Process() {
     <section id="process" data-tone="lilac" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         eyebrow="How it works"
-        title="From hello to live, all on WhatsApp"
-        intro="No forms, no portals, no account managers. Here's a real project, start to finish, the way it actually happens."
+        title={<>From hello to live, all on <Em>WhatsApp</Em></>}
+        intro={<><Mark>No forms, no portals, no account managers.</Mark> Here's a real project, start to finish, the way it actually happens.</>}
       />
 
       <div className="mx-auto mt-16 grid grid-cols-1 max-w-5xl items-start gap-14 lg:grid-cols-[1fr_auto] lg:gap-20">
@@ -172,14 +173,14 @@ export default function Process() {
                 <span
                   data-step
                   className={cn(
-                    "relative z-10 grid size-10 shrink-0 place-items-center rounded-full font-serif text-lg ring-4 ring-(--page) transition-all duration-500",
+                    "relative z-10 grid size-10 shrink-0 place-items-center rounded-full font-mono text-sm font-medium ring-4 ring-(--page) transition-all duration-500",
                     done ? "scale-110 bg-marigold text-plum" : "bg-glow text-ink/60"
                   )}
                 >
                   {i + 1}
                 </span>
                 <div className={cn("pt-1 transition-opacity duration-500", done ? "opacity-100" : "opacity-45")}>
-                  <p className="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">{step.when}</p>
+                  <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-muted-foreground uppercase">{step.when}</p>
                   <h3 className="mt-1 text-2xl text-ink">{step.title}</h3>
                   <p className="mt-1.5 max-w-md text-muted-foreground">{step.body}</p>
                 </div>

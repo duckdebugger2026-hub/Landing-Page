@@ -4,6 +4,7 @@ import Reveal from "@/components/common/Reveal"
 import { site, whatsappLink } from "@/data/site"
 import { duckLines } from "@/data/story"
 import { Eyebrow } from "./SectionHeading"
+import { Mark } from "@/components/common/Type"
 
 export default function StudioNote() {
   const [line, setLine] = useState(-1)
@@ -22,13 +23,13 @@ export default function StudioNote() {
       <div className="mx-auto grid grid-cols-1 max-w-5xl items-center gap-12 md:grid-cols-[1.4fr_1fr] md:gap-16">
         <Reveal>
           <Eyebrow>Why “Duck Debugger”?</Eyebrow>
-          <div className="mt-6 space-y-5 font-serif text-xl leading-relaxed text-ink sm:text-2xl sm:leading-relaxed">
+          <div className="mt-6 space-y-5 font-serif text-2xl leading-snug text-ink sm:text-[2rem] sm:leading-[1.25]">
             <p>
               Programmers have an old trick. When you're stuck, you explain the problem, line by line, to
               a rubber duck on your desk. Somewhere in the explaining, the answer turns up.
             </p>
             <p>
-              That's how we build websites. You tell us about your business, out loud, the way you'd tell a
+              That's how we build websites. You tell us about your business, <Mark>out loud</Mark>, the way you'd tell a
               friend. We listen, ask the obvious questions, and turn it into a site your customers
               actually use.
             </p>

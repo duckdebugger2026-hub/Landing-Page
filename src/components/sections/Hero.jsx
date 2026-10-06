@@ -12,7 +12,7 @@ const lead = "A beautiful home for your business, beyond the".split(" ")
 // Each word slides up from behind a mask, one after another.
 function Word({ i, children }) {
   return (
-    <span className="-mb-[0.14em] inline-block overflow-hidden pb-[0.14em] align-top">
+    <span className="-mx-[0.06em] -mb-[0.14em] inline-block overflow-hidden px-[0.06em] pb-[0.14em] align-top">
       <span className="word-rise inline-block" style={{ "--i": i }}>
         {children}
       </span>
@@ -70,13 +70,13 @@ export default function Hero() {
           </span>
           {site.availability}
         </p>
-        <h1 className="mx-auto max-w-[15ch] text-[2.6rem] leading-[1.05] text-balance text-ink sm:text-6xl lg:text-7xl">
+        <h1 className="mx-auto max-w-[16ch] text-[2.55rem] leading-[1.04] text-balance text-ink sm:text-6xl lg:text-[4.75rem]">
           {lead.map((word, i) => (
             <Fragment key={i}>
               <Word i={i}>{word}</Word>{" "}
             </Fragment>
           ))}
-          <span className="relative isolate inline-block whitespace-nowrap">
+          <span className="relative isolate inline-block font-serif text-[1.1em] font-normal tracking-[-0.01em] whitespace-nowrap text-highlight italic">
             <Word i={lead.length}>Instagram</Word> <Word i={lead.length + 1}>grid.</Word>
             <svg
               aria-hidden

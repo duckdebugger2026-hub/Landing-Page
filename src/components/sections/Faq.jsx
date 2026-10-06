@@ -7,6 +7,7 @@ import Reveal from "@/components/common/Reveal"
 import { faqs, faqTopics, whatsappLink } from "@/data/site"
 import { cn } from "@/lib/utils"
 import { Eyebrow } from "./SectionHeading"
+import { Em } from "@/components/common/Type"
 
 const tabs = ["All", ...faqTopics]
 
@@ -38,7 +39,7 @@ export default function Faq() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.4fr] lg:gap-16">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>FAQ</Eyebrow>
-          <h2 className="mt-3 text-3xl text-ink sm:text-5xl">Questions, answered</h2>
+          <h2 className="mt-4 text-[2rem] leading-[1.08] text-ink sm:text-[2.9rem]">Questions, <Em>answered</Em></h2>
           <p className="mt-4 max-w-sm text-pretty text-muted-foreground">
             Straight answers about price, timing and what happens after launch. If yours isn't here, just
             ask.
@@ -114,7 +115,7 @@ export default function Faq() {
                 />
                 <Accordion.Header>
                   <Accordion.Trigger className="flex w-full items-center gap-4 px-5 py-5 text-left outline-none focus-visible:bg-background sm:gap-5 sm:px-6">
-                    <span className="w-6 shrink-0 font-serif text-sm text-muted-foreground tabular-nums transition-colors group-data-[open]/item:text-marigold">
+                    <span className="w-6 shrink-0 font-mono text-xs text-muted-foreground tabular-nums transition-colors group-data-[open]/item:text-highlight">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1 font-sans text-base font-medium tracking-normal text-ink sm:text-[17px]">{f.q}</span>

@@ -5,6 +5,7 @@ import { dms } from "@/data/story"
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
 import { Eyebrow } from "./SectionHeading"
+import { Em, Mark } from "@/components/common/Type"
 
 const avatarTones = [
   ["#f0a3bf", "#a8365f"],
@@ -109,15 +110,15 @@ export default function Inbox() {
       <div className="mx-auto grid grid-cols-1 max-w-6xl items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <Reveal>
           <Eyebrow>Sound familiar?</Eyebrow>
-          <h2 className="mt-3 text-3xl text-balance text-ink sm:text-5xl">
-            Your DMs ask the same five questions. Every day.
+          <h2 className="mt-4 text-[2rem] leading-[1.08] text-balance text-ink sm:text-[2.9rem]">
+            Your DMs ask the same five questions. <Em>Every day.</Em>
           </h2>
           <p className="mt-5 max-w-lg text-pretty text-muted-foreground">
             People love your posts. Then they message to ask the price, the address, the timings,
-            again and again, often at 11 pm. A website answers all of it before anyone has to ask, and
+            again and again, often at 11 pm. A website answers all of it <Mark>before anyone has to ask</Mark>, and
             sends the serious customers straight to your WhatsApp.
           </p>
-          <p className="mt-6 max-w-lg border-l-2 border-marigold pl-4 font-serif text-xl leading-snug text-ink">
+          <p className="mt-6 max-w-lg border-l-2 border-marigold pl-4 font-serif text-2xl leading-snug text-ink">
             Fewer “price?” messages. More “I'd like to order.”
           </p>
         </Reveal>

@@ -242,7 +242,7 @@ export default function ChatWidget() {
           <header className="flex items-center gap-3 bg-band px-4 py-3.5 text-white">
             <DuckAvatar className="size-10" />
             <div className="min-w-0 flex-1">
-              <p className="font-serif text-lg leading-tight">Ask the duck</p>
+              <p className="text-base leading-tight font-semibold tracking-tight">Ask the duck</p>
               <p className="text-xs text-white/65">Instant answers · humans on WhatsApp</p>
             </div>
             <a

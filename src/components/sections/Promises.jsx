@@ -3,6 +3,7 @@ import { promises } from "@/data/story"
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
 import SectionHeading from "./SectionHeading"
+import { Em } from "@/components/common/Type"
 
 const tilts = [-8, 5, -4, 7]
 
@@ -41,7 +42,7 @@ export default function Promises() {
     <section id="promises" data-tone="cream" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         eyebrow="In writing"
-        title="Four promises, stamped"
+        title={<>Four promises, <Em>stamped</Em></>}
         intro="Every project starts with a one-page agreement. These four lines are always on it."
       />
       <ul ref={ref} className="mx-auto mt-16 grid max-w-6xl gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">

@@ -16,6 +16,7 @@ import { InstagramIcon, WhatsAppIcon } from "@/components/common/Icons"
 import Reveal from "@/components/common/Reveal"
 import { Eyebrow } from "./SectionHeading"
 import { instagramLink, packages, site, whatsappLink } from "@/data/site"
+import { Em, Mark } from "@/components/common/Type"
 
 const packageItems = [
   ...packages.map((p) => ({ value: p.name, label: `${p.name} – ${p.price}` })),
@@ -110,9 +111,9 @@ export default function Contact() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-[1fr_1.15fr] md:gap-14">
         <Reveal>
           <Eyebrow>Contact</Eyebrow>
-          <h2 className="mt-3 text-3xl text-ink sm:text-5xl">Tell us about your business</h2>
+          <h2 className="mt-4 text-[2rem] leading-[1.08] text-ink sm:text-[2.9rem]">Tell us about <Em>your business</Em></h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            Share a few details and we will send a free quote and a homepage idea. Prefer to talk?
+            Share a few details and we will send <Mark>a free quote and a homepage idea</Mark>. Prefer to talk?
             Message us on WhatsApp.
           </p>
           <div className="mt-8 space-y-3">

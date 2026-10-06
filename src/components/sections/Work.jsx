@@ -8,12 +8,13 @@ import { projects } from "@/data/site"
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
 import SectionHeading from "./SectionHeading"
+import { Em } from "@/components/common/Type"
 
 const reducedMotion =
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
 const tile = "tile-in rounded-2xl border border-border bg-surface p-6"
-const label = "text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase"
+const label = "font-mono text-[11px] font-medium tracking-[0.16em] text-muted-foreground uppercase"
 
 // The big panel: the client's colours, a laptop and a phone that lean toward the pointer.
 function Stage({ project }) {
@@ -101,7 +102,7 @@ export default function Work() {
     <section id="work" data-tone="petal" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         eyebrow="Portfolio"
-        title="Selected work"
+        title={<>Selected <Em>work</Em></>}
         intro="Three shops, three very different customers. Every site is designed around how its customers actually buy."
       />
 
@@ -122,13 +123,13 @@ export default function Work() {
                 )}
               >
                 <span className="flex items-baseline gap-3">
-                  <span className={cn("font-serif text-sm tabular-nums", selected ? "text-marigold" : "text-muted-foreground")}>
+                  <span className={cn("font-mono text-xs tabular-nums", selected ? "text-highlight" : "text-muted-foreground")}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span>
                     <span
                       className={cn(
-                        "block font-serif text-xl transition-colors",
+                        "block text-lg font-semibold tracking-tight transition-colors",
                         selected ? "text-ink" : "text-ink/55 group-hover:text-ink"
                       )}
                     >
@@ -161,7 +162,7 @@ export default function Work() {
 
           <div key={`brief-${active}`} className={cn(tile, "lg:col-span-2")} style={{ "--d": "60ms" }}>
             <p className={label}>The brief</p>
-            <p className="mt-3 font-serif text-xl leading-snug text-balance text-ink sm:text-2xl">“{project.brief}”</p>
+            <p className="mt-3 font-serif text-2xl leading-snug text-balance text-ink sm:text-[1.75rem]">“{project.brief}”</p>
           </div>
 
           <div key={`palette-${active}`} className={tile} style={{ "--d": "120ms" }}>
@@ -217,7 +218,7 @@ export default function Work() {
                 ].map(([k, v]) => (
                   <div key={k}>
                     <dt className="text-xs text-muted-foreground">{k}</dt>
-                    <dd className="font-serif text-xl text-ink">{v}</dd>
+                    <dd className="text-lg font-semibold tracking-tight text-ink">{v}</dd>
                   </div>
                 ))}
               </dl>

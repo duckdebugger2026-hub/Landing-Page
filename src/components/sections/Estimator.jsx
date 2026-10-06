@@ -18,6 +18,7 @@ import { useCountUp } from "@/hooks/useCountUp"
 import { formatINR } from "@/lib/format"
 import { cn } from "@/lib/utils"
 import SectionHeading from "./SectionHeading"
+import { Em } from "@/components/common/Type"
 
 const steps = [
   { label: "Business", title: "What kind of business is it?" },
@@ -160,7 +161,7 @@ export default function Estimator() {
     <section id="estimate" data-tone="blush" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         eyebrow="Estimator"
-        title="Build your own package"
+        title={<>Build your <Em>own</Em> package</>}
         intro="Answer five quick questions and watch the price update as you go. No sign-up, no obligation."
       />
 
@@ -197,7 +198,7 @@ export default function Estimator() {
           </ol>
 
           <div key={step} className="step-in mt-8 min-h-[22rem]">
-            <p className="text-xs font-medium tracking-[0.2em] text-muted-foreground uppercase sm:hidden">
+            <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-muted-foreground uppercase sm:hidden">
               Step {step + 1} of {steps.length}
             </p>
             <h3 className="mt-1 text-2xl text-ink sm:mt-0 sm:text-3xl">{current.title}</h3>
@@ -325,7 +326,7 @@ export default function Estimator() {
               Back
             </Button>
             <p className="text-sm text-muted-foreground lg:hidden">
-              <span className="font-serif text-lg text-ink tabular-nums">{formatINR(total)}</span>
+              <span className="text-lg font-semibold tracking-tight text-ink tabular-nums">{formatINR(total)}</span>
             </p>
             {isLast ? (
               <Button onClick={addToEnquiry} className="h-10 rounded-full px-5">
@@ -345,8 +346,8 @@ export default function Estimator() {
           aria-label="Your estimate"
           className="rounded-2xl bg-band p-6 text-white shadow-2xl shadow-plum/25 sm:p-8 lg:sticky lg:top-24"
         >
-          <p className="text-xs font-medium tracking-[0.2em] text-white/60 uppercase">Your estimate</p>
-          <p className="mt-3 font-serif text-5xl tabular-nums sm:text-6xl" aria-live="polite">
+          <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-white/60 uppercase">Your estimate</p>
+          <p className="mt-3 text-5xl font-semibold tracking-[-0.04em] tabular-nums sm:text-6xl" aria-live="polite">
             {formatINR(total)}
           </p>
           <p className="mt-1 text-sm text-white/60">

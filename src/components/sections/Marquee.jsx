@@ -5,7 +5,7 @@ function Row({ hidden = false }) {
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
       {industries.map((name) => (
         <li key={name} className="flex items-center">
-          <span className="px-6 font-serif text-2xl whitespace-nowrap text-petal italic sm:px-8 sm:text-3xl">
+          <span className="px-6 font-serif text-[1.7rem] whitespace-nowrap text-petal italic sm:px-8 sm:text-4xl">
             {name}
           </span>
           <span aria-hidden className="size-1.5 rounded-full bg-marigold" />

@@ -6,6 +6,7 @@ import StudioStatus from "@/components/footer/StudioStatus"
 import Wordmark from "@/components/footer/Wordmark"
 import Logo from "@/components/layout/Logo"
 import { instagramLink, navLinks, site, whatsappLink } from "@/data/site"
+import { Em } from "@/components/common/Type"
 
 const year = new Date().getFullYear()
 
@@ -27,8 +28,8 @@ export default function Footer({ home = true }) {
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-14 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <StudioStatus />
-            <h2 className="mt-6 max-w-2xl text-4xl leading-[1.05] text-balance sm:text-6xl">
-              Let's give your shop a home online.
+            <h2 className="mt-6 max-w-2xl text-4xl leading-[1.04] text-balance sm:text-[3.6rem]">
+              Let's give your shop <Em className="text-marigold">a home online.</Em>
             </h2>
             <p className="mt-5 max-w-lg text-pretty text-white/65">
               Tell us about your business on WhatsApp. You'll get a free quote and a homepage idea, usually
