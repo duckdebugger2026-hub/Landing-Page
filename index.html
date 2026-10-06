@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <meta name="theme-color" content="#2a1630" />
+    <script>
+      // Apply the saved or system theme before first paint to avoid a flash.
+      try {
+        var theme = localStorage.getItem('theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#130b16')
+        }
+      } catch (e) {}
+    </script>
+
+    <!-- SEO and link previews. Keep in sync with src/lib/site.ts. -->
+    <title>Duck Debugger | Websites for small businesses</title>
+    <meta
+      name="description"
+      content="We design fast, mobile-first websites for small businesses. Enquiries land straight in your Google Sheet, and customers can reach you on WhatsApp in one tap."
+    />
+    <link rel="canonical" href="https://duckdebugger.in/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://duckdebugger.in/" />
+    <meta property="og:site_name" content="Duck Debugger" />
+    <meta property="og:title" content="Duck Debugger | Websites for small businesses" />
+    <meta
+      property="og:description"
+      content="We design fast, mobile-first websites for small businesses. Enquiries land straight in your Google Sheet, and customers can reach you on WhatsApp in one tap."
+    />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Duck Debugger",
+        "url": "https://duckdebugger.in",
+        "description": "We design fast, mobile-first websites for small businesses.",
+        "email": "hello@duckdebugger.in",
+        "telephone": "+919000000000",
+        "areaServed": "IN",
+        "sameAs": ["https://instagram.com/duckdebugger"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

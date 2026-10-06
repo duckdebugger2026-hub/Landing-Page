@@ -1,0 +1,325 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./styles/shadcn.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "DM Serif Display", Georgia, serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+
+  /* Plum & Marigold brand palette */
+  --color-plum: var(--plum);
+  --color-plum-soft: var(--plum-soft);
+  --color-marigold: var(--marigold);
+  --color-petal: var(--petal);
+  --color-lilac: var(--lilac);
+  --color-haldi: var(--haldi);
+  --color-whatsapp: var(--whatsapp);
+
+  /* Semantic surfaces: these flip in dark mode, the brand colours above don't */
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-band: var(--band);
+  --color-band-soft: var(--band-soft);
+  --color-glow: var(--glow);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --plum: #2a1630;
+  --plum-soft: #3b2442;
+  --marigold: #e5a03a;
+  --petal: #f7f5f8;
+  --lilac: #efeaf1;
+  --haldi: #fbebcb;
+  --whatsapp: #1fa855;
+
+  --ink: var(--plum);
+  --surface: #ffffff;
+  --subtle: var(--lilac);
+  --band: var(--plum);
+  --band-soft: var(--plum-soft);
+  --glow: var(--haldi);
+
+  --background: var(--petal);
+  --foreground: var(--plum);
+  --card: #ffffff;
+  --card-foreground: var(--plum);
+  --popover: #ffffff;
+  --popover-foreground: var(--plum);
+  --primary: var(--plum);
+  --primary-foreground: #ffffff;
+  --secondary: var(--lilac);
+  --secondary-foreground: var(--plum);
+  --muted: var(--lilac);
+  --muted-foreground: #6e5f73;
+  --accent: var(--lilac);
+  --accent-foreground: var(--plum);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e4dde7;
+  --input: #ddd5e1;
+  --ring: var(--marigold);
+  --radius: 0.75rem;
+  color-scheme: light;
+}
+
+/* Dark mode: a warm plum-black, never pure black, with the same marigold accent */
+.dark {
+  --ink: #f3ebf5;
+  --surface: #1b1120;
+  --subtle: #1f1426;
+  --band: #25152d;
+  --band-soft: #321e3b;
+  --glow: #2d1b36;
+
+  --background: #130b16;
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: #241829;
+  --popover-foreground: var(--ink);
+  --primary: #f3ebf5;
+  --primary-foreground: var(--plum);
+  --secondary: #261a2d;
+  --secondary-foreground: var(--ink);
+  --muted: #261a2d;
+  --muted-foreground: #b2a2b8;
+  --accent: #2b1f33;
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #33253b;
+  --input: #3d2e45;
+  color-scheme: dark;
+}
+
+/* Crossfade between themes (View Transitions API, where supported) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-serif font-normal tracking-tight;
+  }
+  /* Tailwind resets buttons to the default arrow; anything clickable gets a pointer. */
+  button,
+  [role="button"],
+  [role="radio"],
+  [role="checkbox"],
+  [role="option"],
+  [role="tab"],
+  select,
+  summary,
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+  :disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+/* ---------- Motion ----------
+   One easing curve and a few short entrances, so movement feels calm and
+   deliberate. Everything is switched off for people who prefer reduced motion. */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll reveal, toggled by <Reveal> */
+.reveal {
+  opacity: 0;
+  translate: var(--reveal-x, 0) var(--reveal-y, 24px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    translate 0.9s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Hero entrance */
+.word-rise {
+  animation: word-rise 0.9s var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + 150ms);
+}
+@keyframes word-rise {
+  from {
+    translate: 0 110%;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.9s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+
+.fade-down {
+  animation: fade-down 0.7s var(--ease-out) backwards;
+}
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+}
+
+.draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-line 1s var(--ease-out) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.phone-in {
+  animation: phone-in 1.3s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes phone-in {
+  from {
+    opacity: 0;
+    translate: 0 90px;
+    rotate: var(--from-rotate, 0deg);
+  }
+}
+
+.arc-in {
+  transform-origin: bottom center;
+  animation: arc-in 1.3s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes arc-in {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+/* Live preview: lets the artwork gradients fade between colour palettes */
+@property --pv-from {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #cccccc;
+}
+@property --pv-to {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #999999;
+}
+.pv-art {
+  transition:
+    --pv-from 0.6s ease,
+    --pv-to 0.6s ease;
+}
+
+/* Estimator */
+.step-in {
+  animation: step-in 0.45s var(--ease-out) backwards;
+}
+@keyframes step-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+.line-in {
+  animation: line-in 0.35s var(--ease-out) backwards;
+}
+@keyframes line-in {
+  from {
+    opacity: 0;
+    translate: -8px 0;
+  }
+}
+
+/* Industry ticker */
+.marquee-track {
+  animation: marquee 50s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .word-rise,
+  .fade-up,
+  .fade-down,
+  .phone-in,
+  .arc-in,
+  .step-in,
+  .line-in,
+  .marquee-track {
+    animation: none;
+  }
+  .draw-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .reveal {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}
