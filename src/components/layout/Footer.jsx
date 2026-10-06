@@ -14,12 +14,12 @@ const legal = [
 
 export default function Footer({ home = true }) {
   // On legal pages, section links point back to the homepage.
-  const prefix = home ? "" : "/"
+  const prefix = home ? "" : import.meta.env.BASE_URL
   return (
     <footer className="bg-band px-4 pt-16 pb-24 text-white sm:px-6 sm:pb-10">
       <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div>
-          <Logo inverted href={home ? "#top" : "/"} />
+          <Logo inverted href={home ? "#top" : import.meta.env.BASE_URL} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">
             <span className="font-medium text-white">About us.</span> {site.name} {site.about}
           </p>

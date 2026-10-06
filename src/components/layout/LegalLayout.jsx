@@ -19,7 +19,7 @@ export default function LegalLayout({ title, updated, children }) {
     <>
       <header className="border-b bg-background">
         <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 sm:px-6">
-          <Logo href="/" />
+          <Logo href={import.meta.env.BASE_URL} />
           <div className="flex items-center gap-4">
             <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-ink">
               <ArrowLeftIcon className="size-4" /> Back to home
