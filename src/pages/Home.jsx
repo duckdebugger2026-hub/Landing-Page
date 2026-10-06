@@ -1,4 +1,3 @@
-import Aurora from "@/components/common/Aurora"
 import DotField from "@/components/common/DotField"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/Header"
@@ -21,7 +20,6 @@ export default function Home() {
   useScrollTone()
   return (
     <>
-      <Aurora />
       <DotField />
       <Header />
       <main>

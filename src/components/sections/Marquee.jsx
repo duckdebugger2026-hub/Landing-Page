@@ -18,7 +18,7 @@ function Row({ hidden = false }) {
 // Slow, endless ticker of the kinds of businesses we build for.
 export default function Marquee() {
   return (
-    <section aria-label="Businesses we build for" className="marquee band-flow relative overflow-hidden bg-band py-6 sm:py-7">
+    <section aria-label="Businesses we build for" className="marquee relative overflow-hidden bg-band py-6 sm:py-7">
       <div className="marquee-track flex w-max">
         <Row />
         <Row hidden />

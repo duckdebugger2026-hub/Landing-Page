@@ -134,14 +134,14 @@ export default function DotField() {
       schedule()
     }
 
-    // Repaint with new colours when the theme changes.
+    // Repaint with new colours when the scroll mood or the theme changes.
     const themeObserver = new MutationObserver(() => {
       setTimeout(() => {
         colours = readColours()
         schedule()
       }, 50)
     })
-    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-tone"] })
 
     resize()
     window.addEventListener("resize", resize)

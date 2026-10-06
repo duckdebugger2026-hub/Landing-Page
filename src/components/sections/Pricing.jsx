@@ -9,11 +9,11 @@ import { Em, Mark } from "@/components/common/Type"
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="band-gradient bg-band px-4 py-20 sm:px-6 sm:py-28">
+    <section id="pricing" data-tone="plum" className="px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         inverted
         eyebrow="Pricing"
-        title={<>Simple packages, <Em bright>clear prices</Em></>}
+        title={<>Simple packages, <Em className="text-marigold">clear prices</Em></>}
         intro="Pick a starting point. Every package includes a mobile-friendly design, an enquiry form connected to Google Sheets and a WhatsApp chat button."
       />
       <div className="mx-auto mt-14 grid max-w-5xl items-stretch gap-5 md:grid-cols-3">
@@ -23,12 +23,12 @@ export default function Pricing() {
             className={cn(
               "relative flex h-full flex-col rounded-2xl p-6 transition duration-300 ease-out hover:-translate-y-1",
               pkg.popular
-                ? "gradient-border border-2 bg-background text-ink shadow-2xl shadow-black/30"
+                ? "border-2 border-marigold bg-background text-ink shadow-2xl shadow-black/30"
                 : "border border-white/10 bg-band-soft text-white hover:border-white/25"
             )}
           >
             {pkg.popular && (
-              <Badge className="absolute -top-3 right-5 rounded-full bg-[linear-gradient(135deg,#f6b24a,#f08a5d)] px-3 text-plum">
+              <Badge className="absolute -top-3 right-5 rounded-full bg-marigold px-3 text-plum">
                 Most popular
               </Badge>
             )}

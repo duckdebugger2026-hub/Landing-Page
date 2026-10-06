@@ -2,16 +2,9 @@ import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
 
 // The attention font: Instrument Serif italic, used for one or two key words in a heading.
-// `bright` is for dark backgrounds such as the pricing section and the footer.
-export function Em({ children, className, bright = false }) {
+export function Em({ children, className }) {
   return (
-    <em
-      className={cn(
-        "font-serif text-[1.08em] leading-none font-normal tracking-[-0.01em] italic",
-        bright ? "text-gradient-bright" : "text-gradient",
-        className
-      )}
-    >
+    <em className={cn("font-serif text-[1.08em] leading-none font-normal tracking-[-0.01em] text-highlight italic", className)}>
       {children}
     </em>
   )
