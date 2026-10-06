@@ -1,5 +1,5 @@
 // Three large, soft colour glows that drift slowly behind the page, all the
-// time. Their colours follow the current scroll mood (see index.css).
+// time. Only their position moves, so the GPU can drift them without repainting.
 export default function Aurora() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
